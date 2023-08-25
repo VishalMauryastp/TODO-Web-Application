@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllToDo = ({Data}) => {
   const [data, setData] = useState([]);
@@ -12,12 +14,15 @@ const AllToDo = ({Data}) => {
       url: `http://localhost:3001/delete/${id}`,
     })
       .then(() => {
+        toast.success("ToDo Deleted Successfully ", { autoClose: 800 })
         // Remove the deleted item from the data state
         // setData((prevData) => prevData.filter((item) => item._id !== id));
       })
       .catch((err) => {
+        toast.error("ToDo Not Deleted Successfully ", { autoClose: 800 })
         console.log(err);
       });
+
   };
 
   return (

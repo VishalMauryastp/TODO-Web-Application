@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UpdateTodo = () => {
   const naviagate = useNavigate();
@@ -15,10 +17,12 @@ const UpdateTodo = () => {
     })
       .then((result) => {
         setData(result.data.task);
+        toast.success('Now ToDo Updated ',{ autoClose: 800 })
         // console.log(result.data);
       })
       .catch((err) => {
         console.log(err);
+        toast.error('Now  ToDo Not Updated ',{ autoClose: 800 })
       });
   }, []);
 
