@@ -21,7 +21,7 @@ const Create = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [data]); // Run the effect whenever "data" changes
+  }, [ data]); 
 
   const handleAdd = () => {
     if (task.trim() === "") {

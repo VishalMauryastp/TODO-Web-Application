@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const AllToDo = ({Data}) => {
+const AllToDo = ({ Data }) => {
   const [data, setData] = useState([]);
   const navigate = useNavigate();
 
@@ -14,15 +14,14 @@ const AllToDo = ({Data}) => {
       url: `http://localhost:3001/delete/${id}`,
     })
       .then(() => {
-        toast.success("ToDo Deleted Successfully ", { autoClose: 800 })
+        toast.success("ToDo Deleted Successfully ", { autoClose: 800 });
         // Remove the deleted item from the data state
         // setData((prevData) => prevData.filter((item) => item._id !== id));
       })
       .catch((err) => {
-        toast.error("ToDo Not Deleted Successfully ", { autoClose: 800 })
+        toast.error("ToDo Not Deleted Successfully ", { autoClose: 800 });
         console.log(err);
       });
-
   };
 
   return (
@@ -40,11 +39,8 @@ const AllToDo = ({Data}) => {
               key={i}
               className="flex flex-col h-[300px]  p-4 bg-gray-200 w-full  rounded-xl mx-auto"
             >
-              <div className="w-full h-full bg-transparent outline-none  flex-wrap  ">
+              <div className="w-full h-full bg-transparent outline-none  flex-wrap   TODOPRIVIEW ">
                 {val.task}
-                
-                
-                
               </div>
               <div className="flex  justify-between">
                 <button
@@ -62,6 +58,18 @@ const AllToDo = ({Data}) => {
                   Remove
                 </button>
               </div>
+              <style>{`
+              .TODOPRIVIEW{
+                display: -webkit-box;
+              -webkit-line-clamp: 10;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+
+              }
+              
+
+              `}</style>
             </div>
           );
         })
