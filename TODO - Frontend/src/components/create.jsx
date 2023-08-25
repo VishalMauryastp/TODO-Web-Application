@@ -25,7 +25,7 @@ const Create = () => {
 
   const handleAdd = () => {
     if (task.trim() === "") {
-      toast.error('ToDo should not be empty ',{ autoClose: 800 })
+      toast.error('ToDo should not be empty. ',{ autoClose: 800 })
       return;
     }
 
