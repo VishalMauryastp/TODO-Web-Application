@@ -28,11 +28,9 @@ function Home() {
       </div>
       <div className=" py-8 w-[90%] mx-auto grid gap-4 md:grid-cols-2 min-[1042px]:grid-cols-3 ">
         <Create
-          // _this={{
-          //   handleLode,
-          // }}
+          
         />
-        <AllToDo Data={data} />
+        {/* <AllToDo /> */}
       </div>
     </section>
   );
