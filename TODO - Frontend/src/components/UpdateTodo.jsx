@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 const UpdateTodo = () => {
   const naviagate = useNavigate();
   const [data, setData] = useState();
+  const [originalData, setOriginalData] = useState(""); 
   const { id } = useParams();
   //   console.log(id);
 
@@ -17,6 +18,7 @@ const UpdateTodo = () => {
     })
       .then((result) => {
         setData(result.data.task);
+        setOriginalData(result.data.task);
         
         // console.log(result.data);
       })
@@ -25,6 +27,19 @@ const UpdateTodo = () => {
        
       });
   }, []);
+
+  const handleCancel = () => {
+    if (data !== originalData) {
+      const confirmCancel = window.confirm(
+        "You have unsaved changes. Do you really want to cancel?"
+      );
+      if (confirmCancel) {
+        naviagate("/");
+      }
+    } else {
+      naviagate(`/update/${id}`);
+    }
+  };
 
   const handleUpadate = () => {
     axios
@@ -55,7 +70,7 @@ const UpdateTodo = () => {
           {/* */}
           <div className="flex  justify-between">
             <button
-              onClick={() => naviagate("/")}
+              onClick={ handleCancel}
               className="bg-black mt-4 rounded-lg  w-[100px] py-2 text-white font-semibold hover:bg-black bg-opacity-60  transition-colors"
             >
               Cancel
