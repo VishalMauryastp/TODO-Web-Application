@@ -17,20 +17,25 @@ const UpdateTodo = () => {
     })
       .then((result) => {
         setData(result.data.task);
-        toast.success('Now ToDo Updated ',{ autoClose: 800 })
+        
         // console.log(result.data);
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Now  ToDo Not Updated ',{ autoClose: 800 })
+       
       });
   }, []);
 
   const handleUpadate = () => {
     axios
       .put(`http://localhost:3001/update/${id}`, { task: data })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+      .then((result) =>{ console.log(result)
+        toast.success('Now ToDo Updated ',{ autoClose: 800 })
+      })
+      .catch((err) =>{ console.log(err)
+        toast.error('Now  ToDo Not Updated ',{ autoClose: 800 })
+      
+      });
   };
 
   return (
